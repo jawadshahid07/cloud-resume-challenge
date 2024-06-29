@@ -1,0 +1,70 @@
+/* Basic styling */
+body {
+    font-family: 'XCharter', serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.resume-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: black;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+main {
+    padding: 10px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    color: black;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add more specific styling as needed */
+
+
