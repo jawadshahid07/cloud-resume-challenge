@@ -37,7 +37,7 @@ main {
 }
 
 section {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 section h2 {
@@ -65,6 +65,74 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Add more specific styling as needed */
+.extra-info {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.extra-info p {
+    margin-bottom: 10px;
+}
+
+#visitor-count {
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    color: #333; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px; 
+}
+
+#education .education {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+#education .left {
+    text-align: left;
+    flex-grow: 1; 
+}
+
+#education .right {
+    text-align: right;
+    flex-shrink: 0; 
+}
 
 
+#experience .job-info {
+    margin-bottom: 0px;
+}
+
+#experience .job-info strong {
+    display: inline-block;
+    margin-right: 0px;
+}
+
+#experience .job-info .right {
+    float: right;
+}
+
+
+#projects p,
+#certifications p {
+    margin-bottom: 0px;
+}
+
+#projects a,
+#certifications a {
+    float: right;
+}
+
+* {
+    margin: 0px;
+    padding: 0px
+}
