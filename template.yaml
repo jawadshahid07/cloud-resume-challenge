@@ -36,11 +36,20 @@ Resources:
           AliasTarget: 
             HostedZoneId: Z2FDTNDATAQYW2
             DNSName: !GetAtt MyDistribution.DomainName
+  
+  MyCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: jawadify.xyz
+      ValidationMethod: DNS
 
   MyDistribution:
     Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
+        ViewerCertificate:
+          AcmCertificateArn: !Ref MyCertificate
+          SslSupportMethod: sni-only
         Origins:
           - DomainName: my-amazing-website-50000.s3-website.eu-north-1.amazonaws.com
             Id: S3Origin
