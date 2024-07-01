@@ -25,6 +25,26 @@ Resources:
       OwnershipControls:
         Rules:
           - ObjectOwnership: BucketOwnerPreferred
+  
+  MyDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: my-amazing-website-50000.s3-website.eu-north-1.amazonaws.com
+            Id: S3Origin
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+        DefaultCacheBehavior:
+          ViewerProtocolPolicy: allow-all
+          TargetOriginId: S3Origin
+          DefaultTTL: 0
+          MinTTL: 0
+          MaxTTL: 0
+          ForwardedValues:
+            QueryString: false
+        Enabled: true
+        DefaultRootObject: index.html
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
