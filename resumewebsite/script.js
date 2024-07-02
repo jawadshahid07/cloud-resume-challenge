@@ -1,8 +1,15 @@
 async function updateVisitorCount() {
     try {
-        const response = await fetch('YOUR_LAMBDA_ENDPOINT');
+        const response = await fetch('https://uiehb7xez0.execute-api.eu-north-1.amazonaws.com/Prod/hello');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
-        const visitorCount = data.count;
+        const visitorCount = data.message;
+
+        console.log('Response:', response);
+        console.log('Data:', data);
+
 
         const visitorCountElement = document.getElementById('visitor-count');
         visitorCountElement.textContent = visitorCount;
