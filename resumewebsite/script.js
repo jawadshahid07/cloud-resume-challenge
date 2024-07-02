@@ -1,6 +1,6 @@
 async function updateVisitorCount() {
     try {
-        const response = await fetch('https://uiehb7xez0.execute-api.eu-north-1.amazonaws.com/Prod/hello');
+        const response = await fetch('https://uiehb7xez0.execute-api.eu-north-1.amazonaws.com/Prod/get');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
