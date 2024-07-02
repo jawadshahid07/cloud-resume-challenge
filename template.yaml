@@ -26,20 +26,6 @@ Resources:
         Rules:
           - ObjectOwnership: BucketOwnerPreferred
 
-  DynamoDBTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: cloud-resume-challenge
-      BillingMode: PAY_PER_REQUEST
-      AttributeDefinitions:
-        - AttributeName: "ID"
-          AttributeType: "S"
-      KeySchema:
-        - AttributeName: "ID"
-          KeyType: "HASH"
-
-
-  
   MyRoute53Record:
     Type: "AWS::Route53::RecordSetGroup"
     Properties:
@@ -94,34 +80,38 @@ Resources:
               - /*
       Bucket: !Ref MyWebsite
 
-  GetFunction:
-    Type: AWS::Serverless::Function 
+  VisitorCountTable:
+    Type: AWS::DynamoDB::Table
     Properties:
-      CodeUri: get-function/
-      Handler: app.lambda_handler
-      Runtime: python3.10
-      Architectures:
-        - x86_64
-      Events:
-        HelloWorld:
-          Type: Api 
-          Properties:
-            Path: /get
-            Method: get
+      TableName: VisitorCountTable
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
 
-  PutFunction:
+  VisitorCountFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: app.lambda_handler
       Runtime: python3.10
-      Architectures:
-        - x86_64
+      CodeUri: visitor-count/
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref VisitorCountTable
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: cloud-resume-challenge
+            TableName: !Ref VisitorCountTable
       Events:
-        HelloWorld:
+        VisitorCountApi:
           Type: Api
           Properties:
-            Path: /put
+            Path: /visitor-count
             Method: get
+
+Outputs:
+  WebsiteURL:
+    Description: "URL for website"
+    Value: !Sub "http://${MyWebsite}.s3-website-${AWS::Region}.amazonaws.com"
