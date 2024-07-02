@@ -37,6 +37,8 @@ Resources:
       KeySchema:
         - AttributeName: "ID"
           KeyType: "HASH"
+
+
   
   MyRoute53Record:
     Type: "AWS::Route53::RecordSetGroup"
@@ -108,16 +110,18 @@ Resources:
             Method: get
 
   PutFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
-      CodeUri: put-function/
       Handler: app.lambda_handler
       Runtime: python3.10
       Architectures:
         - x86_64
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: cloud-resume-challenge
       Events:
         HelloWorld:
-          Type: Api 
+          Type: Api
           Properties:
             Path: /put
             Method: get
