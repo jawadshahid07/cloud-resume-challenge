@@ -7,7 +7,7 @@ from unittest import mock
 
 from visitorcount import app
 
-with open('crc/template.yaml', 'r') as f:
+with open('template.yaml', 'r') as f:
     TABLENAME = re.search(r'TableName: (.*)?', f.read()).group(1)
 
 @mock.patch.dict(os.environ, {"TABLENAME": TABLENAME})
