@@ -25,9 +25,10 @@ def test_lambda_handler():
     assert "Access-Control-Allow-Headers" in ret["headers"]
 
     if ret["statusCode"] == 200:
-        assert "visit_count" in ret["body"]
+        assert "visitorCount" in ret["body"]
         assert json.loads(ret["body"])["visitorCount"].isnumeric()
     else:
         assert json.loads(ret["body"])["visitorCount"] == -1
+
 
     return
