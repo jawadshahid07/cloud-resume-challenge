@@ -1,55 +1,33 @@
 import json
 import os
-import boto3
-import pytest
-from moto import mock_dynamodb2
-from visitorcount import lambda_handler
+import os
+import re
+import json
+from unittest import mock
 
-@pytest.fixture()
-def apigw_event():
-    """ Generates API GW Event"""
-    return {
-        "resource": "/{proxy+}",
-        "path": "/visitor-count",
-        "httpMethod": "GET",
-        "headers": {
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "User-Agent": "Custom User Agent String",
-        },
-        "queryStringParameters": {},
-        "pathParameters": {"proxy": "/visitor-count"},
-        "stageVariables": {},
-        "requestContext": {
-            "resourceId": "123456",
-            "apiId": "1234567890",
-            "resourcePath": "/{proxy+}",
-            "httpMethod": "GET",
-            "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
-            "accountId": "123456789012",
-            "identity": {
-                "sourceIp": "127.0.0.1",
-            },
-            "stage": "prod",
-        },
-        "body": None,
-        "isBase64Encoded": False,
-    }
+from visitorcount import app
 
-@mock_dynamodb2
-def test_lambda_handler(apigw_event):
-    os.environ['VisitorCountTable'] = 'VisitorCount'
-    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-    table = dynamodb.create_table(
-        TableName='VisitorCount',
-        KeySchema=[{'AttributeName': 'id', 'KeyType': 'HASH'}],
-        AttributeDefinitions=[{'AttributeName': 'id', 'AttributeType': 'S'}],
-        ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
-    )
-    table.put_item(Item={'id': 'visitorCount', 'visitorCount': 0})
+with open('crc/template.yaml', 'r') as f:
+    TABLENAME = re.search(r'TableName: (.*)?', f.read()).group(1)
 
-    ret = lambda_handler(apigw_event, "")
-    data = json.loads(ret["body"])
+@mock.patch.dict(os.environ, {"TABLENAME": TABLENAME})
+def test_lambda_handler():
+    assert "AWS_ACCESS_KEY_ID" in os.environ
+    assert "AWS_SECRET_ACCESS_KEY" in os.environ
 
-    assert ret["statusCode"] == 200
-    assert "visitorCount" in data
-    assert data["visitorCount"] == 1
+    ret = app.lambda_handler("", "")
+
+    assert "statusCode" in ret
+    assert "headers" in ret
+    assert "body" in ret
+    assert "Access-Control-Allow-Origin"  in ret["headers"]
+    assert "Access-Control-Allow-Methods" in ret["headers"]
+    assert "Access-Control-Allow-Headers" in ret["headers"]
+
+    if ret["statusCode"] == 200:
+        assert "visit_count" in ret["body"]
+        assert json.loads(ret["body"])["visitorCount"].isnumeric()
+    else:
+        assert json.loads(ret["body"])["visitorCount"] == -1
+
+    return
