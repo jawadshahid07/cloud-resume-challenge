@@ -97,7 +97,7 @@ Resources:
     Properties:
       Handler: app.lambda_handler
       Runtime: python3.10
-      CodeUri: visitor-count/
+      CodeUri: visitorcount/
       Environment:
         Variables:
           TABLE_NAME: !Ref VisitorCountTable

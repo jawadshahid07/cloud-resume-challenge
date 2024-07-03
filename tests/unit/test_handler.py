@@ -3,7 +3,7 @@ import os
 import boto3
 import pytest
 from moto import mock_dynamodb2
-from visitor_count.app import lambda_handler  # Ensure this matches your directory structure
+from visitorcount import lambda_handler
 
 @pytest.fixture()
 def apigw_event():
@@ -37,7 +37,6 @@ def apigw_event():
 
 @mock_dynamodb2
 def test_lambda_handler(apigw_event):
-    # Set up DynamoDB mock environment
     os.environ['VisitorCountTable'] = 'VisitorCount'
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
     table = dynamodb.create_table(
@@ -48,7 +47,6 @@ def test_lambda_handler(apigw_event):
     )
     table.put_item(Item={'id': 'visitorCount', 'visitorCount': 0})
 
-    # Call the Lambda handler function
     ret = lambda_handler(apigw_event, "")
     data = json.loads(ret["body"])
 
