@@ -3,7 +3,7 @@ async function updateVisitorCount() {
         const visitorCountElement = document.getElementById('visitor-count-value');
         visitorCountElement.textContent = 'loading...';
 
-        const response = await fetch('https://htma956ct8.execute-api.eu-north-1.amazonaws.com/Prod/visitor-count');
+        const response = await fetch('https://yeqr3v972a.execute-api.eu-north-1.amazonaws.com/Prod/visitorcount');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

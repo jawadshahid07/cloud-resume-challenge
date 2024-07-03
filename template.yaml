@@ -108,7 +108,7 @@ Resources:
         VisitorCountApi:
           Type: Api
           Properties:
-            Path: /visitor-count
+            Path: /visitorcount
             Method: get
 
 Outputs:
