@@ -1,7 +1,7 @@
 import json
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='eu-north-1')
 table_name = 'VisitorCountTable'
 table = dynamodb.Table(table_name)
 
