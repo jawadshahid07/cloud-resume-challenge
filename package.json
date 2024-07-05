@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "puppeteer": "^22.12.1"
+    "puppeteer": "^22.12.1",
+    "react-router-dom": "^6.24.1"
   }
 }

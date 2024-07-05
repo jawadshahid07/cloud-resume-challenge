@@ -7,7 +7,7 @@ deploy-infra:
 	sam build && aws-vault exec my-user --no-session -- sam deploy --no-confirm-changeset
 
 deploy-site:
-	aws-vault exec my-user --no-session -- aws s3 sync ./resumewebsite s3://my-resume-website-7
+	cd resume_website && npm run build && aws-vault exec my-user --no-session -- aws s3 sync ./build s3://my-resume-website-7
 
 delete-infra:
 	aws s3 rm s3://my-resume-website-7--recursive
