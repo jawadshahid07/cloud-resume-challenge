@@ -38,8 +38,22 @@ jobs:
       - run: sam build
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
 
+
+  build-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Install dependencies and build
+        run: |
+          cd resume_website
+          npm install --quiet
+          npm run build
+
   deploy-site:
     runs-on: ubuntu-latest
+    needs: build-site
     steps:
       - uses: actions/checkout@v2
       - uses: jakejarvis/s3-sync-action@master
