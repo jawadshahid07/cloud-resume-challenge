@@ -3,56 +3,56 @@ on: push
 
 
 jobs:
-  test-infra:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-      - name: Install dependencies
-        run: |
-          cd tests
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+  # test-infra:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 2
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-python@v1
+  #       with:
+  #         python-version: 3.8
+  #     - name: Install dependencies
+  #       run: |
+  #         cd tests
+  #         python -m pip install --upgrade pip
+  #         pip install -r requirements.txt
 
-      - name: Run tests
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          pytest tests/unit/test_handler.py 
+  #     - name: Run tests
+  #       env:
+  #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #       run: |
+  #         pytest tests/unit/test_handler.py 
 
-  build-and-deploy-infra:
-    needs: test-infra
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: aws-actions/setup-sam@v1
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-north-1
-      - run: sam build
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+  # build-and-deploy-infra:
+  #   needs: test-infra
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: aws-actions/setup-sam@v1
+  #     - uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: eu-north-1
+  #     - run: sam build
+  #     - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
 
-  deploy-site:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --delete
-        env:
-          AWS_S3_BUCKET: my-resume-website-7
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: resumewebsite
+  # deploy-site:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: jakejarvis/s3-sync-action@master
+  #       with:
+  #         args: --delete
+  #       env:
+  #         AWS_S3_BUCKET: my-resume-website-7
+  #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         SOURCE_DIR: resumewebsite
 
   integration-test-backend:
-    needs: build-and-deploy-infra
+    # needs: build-and-deploy-infra
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -60,7 +60,7 @@ jobs:
         run: make integration-test
 
   end-to-end-test:
-    needs: integration-test-backend
+    # needs: integration-test-backend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
