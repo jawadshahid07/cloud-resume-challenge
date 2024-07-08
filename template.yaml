@@ -37,15 +37,22 @@ Resources:
             HostedZoneId: Z2FDTNDATAQYW2
             DNSName: !GetAtt MyDistribution.DomainName
 
+        - Name: "www.jawadify.xyz"
+          Type: "CNAME"
+          TTL: "300"
+          ResourceRecords:
+            - !GetAtt MyDistribution.DomainName
+
   MyDistribution:
     Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
         ViewerCertificate:
-          AcmCertificateArn: arn:aws:acm:us-east-1:637423471197:certificate/d3e0688d-2664-41aa-8e5e-273585d394a7
+          AcmCertificateArn: arn:aws:acm:us-east-1:637423471197:certificate/f50af5c4-9f60-4630-b498-55ddf46477f9
           SslSupportMethod: sni-only
         Aliases:
           - jawadify.xyz
+          - www.jawadify.xyz
         Origins:
           - DomainName: my-resume-website-7.s3.eu-north-1.amazonaws.com
             Id: S3Origin
