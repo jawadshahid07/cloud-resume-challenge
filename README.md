@@ -117,7 +117,7 @@ make delete-infra
 
 ## Blog
 
-Read about my journey and the challenges I faced while completing the Cloud Resume Challenge on my ![blog](https://dev.to/jawadshahid07/how-to-transition-from-a-generalist-to-a-specialist-in-cloud-computing-my-journey-through-the-cloud-resume-challenge-371n)
+Read about my journey and the challenges I faced while completing the Cloud Resume Challenge on my <a href="https://dev.to/jawadshahid07/how-to-transition-from-a-generalist-to-a-specialist-in-cloud-computing-my-journey-through-the-cloud-resume-challenge-371n">blog</a>.
 
 ## Screenshots
 
