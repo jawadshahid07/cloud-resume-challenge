@@ -126,7 +126,3 @@ Read about my journey and the challenges I faced while completing the Cloud Resu
 ![CI/CD Pipeline](screenshots/cicdpipeline.png)  
 ![CI/CD Results](screenshots/cicddeployed.png)  
 
-
-## Conclusion
-
-Completing the Cloud Resume Challenge was a rewarding experience. It allowed me to dive deep into AWS services, hone my front-end and back-end development skills, and set up a robust CI/CD pipeline. This project solidified my interest in cloud computing and has set me on the path to becoming a cloud engineer.
