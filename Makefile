@@ -1,17 +1,13 @@
 .PHONY: build
 
-build:
-	sam build
-
 deploy-infra:
-	sam build && aws-vault exec my-user --no-session -- sam deploy --no-confirm-changeset
+	terraform apply --auto-approve
 
 deploy-site:
-	cd resume_website && npm run build && aws-vault exec my-user --no-session -- aws s3 sync ./build s3://my-resume-website-7
+	cd resume_website && npm run build && aws s3 sync ./build s3://my-resume-website-8
 
 delete-infra:
-	aws s3 rm s3://my-resume-website-7--recursive
-	sam delete --stack-name cloud-resume-challenge --region eu-north-1
+	terraform destroy
 
 integration-test:
 	FIRST=$$(curl -s "https://2629zq9ael.execute-api.eu-north-1.amazonaws.com/Prod/visitorcount" | jq ".visitorCount | tonumber"); \
