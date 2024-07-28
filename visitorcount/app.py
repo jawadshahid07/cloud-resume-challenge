@@ -6,6 +6,15 @@ table_name = 'VisitorCountTable'
 table = dynamodb.Table(table_name)
 
 def lambda_handler(event, context):
+    origin = event.get('headers', {}).get('origin')
+    allowed_origins = ['https://www.jawadify.xyz', 'https://jawadify.xyz']
+
+    headers = {
+        "Access-Control-Allow-Origin": origin if origin in allowed_origins else "",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*"
+    }
+
     try:
         response = table.update_item(
             Key={'id': 'visitorCount'},
