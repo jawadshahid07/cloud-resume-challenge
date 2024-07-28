@@ -8,7 +8,7 @@ from unittest import mock
 from visitorcount import app
 
 with open('template.yaml', 'r') as f:
-    TABLENAME = re.search(r'TableName: (.*)?', f.read()).group(1)
+    TABLENAME = "VisitorCountTable"
 
 @mock.patch.dict(os.environ, {"TABLENAME": TABLENAME})
 def test_lambda_handler():
