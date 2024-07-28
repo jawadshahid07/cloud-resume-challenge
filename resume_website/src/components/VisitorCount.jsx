@@ -7,7 +7,7 @@ const VisitorCount = () => {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch('https://2629zq9ael.execute-api.eu-north-1.amazonaws.com/Prod/visitorcount');
+        const response = await fetch('https://3qvzt3t8sd.execute-api.us-east-1.amazonaws.com/Prod/visitorcount');
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
