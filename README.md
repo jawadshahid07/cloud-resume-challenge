@@ -1,6 +1,6 @@
 # Cloud Resume Challenge
 
-This project is my implementation of the Cloud Resume Challenge. It showcases my skills in cloud computing, front-end development, back-end integration, and CI/CD automation. The project is built using the AWS Serverless Application Model (SAM) CLI, React, and various AWS services.
+This project is my implementation of the Cloud Resume Challenge. It showcases my skills in cloud computing, front-end development, back-end integration, and CI/CD automation. The project is built using Terraform for IaC, React, and various AWS services.
 
 ## Architecture
 
@@ -12,7 +12,7 @@ This project includes the following components:
 
 1. **Frontend**: A React application that displays my resume.
 2. **Backend**: A serverless API built using AWS Lambda and API Gateway to store and retrieve visitor counts from a DynamoDB table.
-3. **Infrastructure as Code (IaC)**: All resources are defined using AWS SAM and deployed through the SAM CLI.
+3. **Infrastructure as Code (IaC)**: All resources are defined using Terraform and deployed using Terraform CLI.
 4. **CI/CD**: GitHub Actions workflows for continuous integration and continuous deployment, including unit, integration, and end-to-end tests.
 
 You can access my resume website here: [jawadify.xyz](https://jawadify.xyz).
@@ -21,7 +21,7 @@ You can access my resume website here: [jawadify.xyz](https://jawadify.xyz).
 
 - **resume-website**: React project for the resume website.
 - **visitorcount**: Code for the Lambda functions handling the API logic.
-- **template.yaml**: AWS SAM template defining the resources for the project.
+- **main.tf**: Main terraform file with all the resources configuration.
 - **tests**: Unit, integration, and end-to-end tests for the application.
 - **Makefile**: Makefile to ease deployment and testing tasks.
 
@@ -42,7 +42,7 @@ This project utilizes the following AWS services:
 
 To run this project, you need the following tools:
 
-- [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+- [Terraform](https://www.terraform.io/)
 - [Node.js](https://nodejs.org/en/download/)
 - [Python 3](https://www.python.org/downloads/)
 - [Docker](https://hub.docker.com/search/?type=edition&offering=community)
@@ -57,7 +57,7 @@ The project includes a `Makefile` to simplify the build, deployment, and testing
 
 1. **Build the project:**
    ```bash
-   make build
+   terraform init
    ```
 2. **Deploy the infrastructure:**
    ```bash
@@ -122,7 +122,7 @@ Read about my journey and the challenges I faced while completing the Cloud Resu
 ## Screenshots
 
 ![Website Preview](screenshots/resume.png)  
-![SAM CLI](screenshots/samcli.png)  
+![Terraform](screenshots/terraform.png)  
 ![CI/CD Pipeline](screenshots/cicdpipeline.png)  
 ![CI/CD Results](screenshots/cicddeployed.png)  
 
