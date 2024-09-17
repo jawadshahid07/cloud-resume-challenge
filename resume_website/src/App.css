@@ -136,3 +136,16 @@ a:hover {
   margin: 0px;
   padding: 0px
 }
+
+/*extra info*/
+/* Style for the close button */
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  outline: none;
+}

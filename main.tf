@@ -109,6 +109,27 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 
+resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
+  name   = "lambda_dynamodb_policy"
+  role   = aws_iam_role.lambda_exec.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "dynamodb:UpdateItem",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem"
+        ],
+        Resource = aws_dynamodb_table.visitor_count_table.arn
+      }
+    ]
+  })
+}
+
+
 resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
