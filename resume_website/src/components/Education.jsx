@@ -7,7 +7,7 @@ const Education = () => (
     <div className="education">
       <div className="left">
         <strong>FAST NUCES, Lahore</strong> -- Bachelor of Science in Software Engineering<br />
-        <strong>CGPA:</strong> 3.87
+        <strong>CGPA:</strong> 3.86
       </div>
       <div className="right">
         Expected June 2025
