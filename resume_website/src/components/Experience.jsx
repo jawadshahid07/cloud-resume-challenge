@@ -1,4 +1,3 @@
-// Updated Experience.jsx
 import React from 'react';
 
 const Experience = () => (
@@ -7,8 +6,20 @@ const Experience = () => (
 
     <div className="job">
       <p className="job-info">
+        <strong>Associate AI & ML Engineer</strong> <a href="https://www.hytgenx.com/">-- HytGenX</a>
+        <span className="right">May 2025 – Present</span>
+      </p>
+      <ul>
+        <li>Built automation solutions using no-code tools like n8n and Make to streamline lead generation, customer support, and marketing operations for clients.</li>
+        <li>Developed and deployed real-time voice agents using Realkit and Vapi for AI-driven conversations, appointment booking, and call routing across platforms.</li>
+        <li>Engineered scalable MLOps and data pipelines on AWS and Azure, and created custom LangGraph-based agent workflows integrated with SQL, vector databases, and third-party APIs.</li>
+      </ul>
+    </div>
+
+    <div className="job">
+      <p className="job-info">
         <strong>Associate Software Engineer</strong> <a href="https://www.dubizzlelabs.com/">-- Dubizzle Labs</a>
-        <span className="right">March 2025 – Present</span>
+        <span className="right">March 2025 – May 2025</span>
       </p>
       <ul>
         <li>Designed and implemented a dynamic load balancer in Python for monitoring RabbitMQ queues, enabling efficient GPU instance scaling across Genesis, Runpod, and Salad.</li>
@@ -19,7 +30,7 @@ const Experience = () => (
 
     <div className="job">
       <p className="job-info">
-        <strong>Machine Learning Engineer</strong> <a href="https://www.xavor.com/">-- Xavor Corporation</a>
+        <strong>AI Intern</strong> <a href="https://www.xavor.com/">-- Xavor Corporation</a>
         <span className="right">December 2024 – March 2025</span>
       </p>
       <ul>
