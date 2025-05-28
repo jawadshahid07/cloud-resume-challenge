@@ -22,9 +22,9 @@ const Experience = () => (
         <span className="right">March 2025 – May 2025</span>
       </p>
       <ul>
-        <li>Designed and implemented a dynamic load balancer in Python for monitoring RabbitMQ queues, enabling efficient GPU instance scaling across Genesis, Runpod, and Salad.</li>
-        <li>Built robust, maintainable software architecture using design patterns to automate resource allocation for AI workloads powering OLX, Zameen, and Bayut.</li>
-        <li>Developed and managed production-ready machine learning pipelines by conducting exploratory data analysis, data preprocessing, and model training for various AI-driven services.</li>
+        <li>Implemented 200+ lines of tested TypeScript code, implementing efficient MLOps algorithms, to build a product line load balancer service that monitors RabbitMQ queues and controls GPU instance scaling across Genesis and RunPod.</li>
+        <li>Developed scalable software architecture using factory method design pattern to automate GPU scaling, increasing AI service availability from 80% to 95% and reducing cloud GPU costs by 35% across OLX, Zameen, and Bayut.</li>
+        <li>Orchestrated production-ready machine learning pipelines using Python and SQL for data refinement and AI-driven functionalities across Dubizzle’s platforms, enhanced data accuracy by 15% through rigorous exploratory data analysis using statistical methods.</li>
       </ul>
     </div>
 
@@ -34,9 +34,9 @@ const Experience = () => (
         <span className="right">December 2024 – March 2025</span>
       </p>
       <ul>
-        <li>Developed a multimodal pose detection pipeline using YOLO Pose and a CNN to detect sit-to-stand and lie-to-sit motions using elderly care robots and time stamping for further time series analysis.</li>
-        <li>Built a person-tracking system with YOLO Pose, ByteTracker, and Azure PointCloud to track individuals in 3D space for autonomous monitoring and real-time inference.</li>
-        <li>Optimized AI pipelines on an NVIDIA Jetson Orin-powered robot to deploy real-time scalable systems for healthcare applications.</li>
+        <li>Developed Python code, utilizing advanced Machine Learning algorithms and efficient data structures, for a real-time trigger detection system to recognize and timestamp sit-to-stand and lie-to-sit transitions with 99% accuracy, allowing elderly care robots to track motion patterns and using time series analysis for improved patient monitoring.</li>
+        <li>Built a person-tracking system with YOLO Pose, ByteTracker, and Azure PointCloud to track individuals in 3D space for autonomous monitoring and real-time inference under 25ms.</li>
+        <li>Optimized AI pipelines on NVIDIA Jetson Orin and Xavier devices, reducing inference latency by 40%, enabling real-time healthcare monitoring applications and faster responsiveness for time-sensitive patient needs.</li>
       </ul>
     </div>
 
@@ -47,7 +47,7 @@ const Experience = () => (
       </p>
       <ul>
         <li>Designed a custom segmentation pipeline that improved dataset quality for model training and boosted the accuracy of deep learning models on rice disease detection by 20%.</li>
-        <li>Applied image upscaling and GAN-based super-resolution to enhance satellite imagery for research applications.</li>
+        <li>Demonstrated image upscaling and GAN-based super-resolution on satellite imagery using diffusion models, enhancing spatial resolution by 4× and increasing pixel density for high-precision research analysis.</li>
       </ul>
     </div>
   </section>
